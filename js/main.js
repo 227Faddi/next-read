@@ -16,7 +16,9 @@ async function getBook(){
     const userInput = document.querySelector('#userInput').value
     const url = `https://openlibrary.org/subjects/${userInput}.json`
     const response = await fetch(url);
+    alert(response)
     const data = await response.json();
+    alert(data)
     const booksAvailable = data.works.length;
     
     function displayBook(index) {
