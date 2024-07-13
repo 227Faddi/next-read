@@ -25,6 +25,7 @@ async function getBook(){
       spinner.classList.remove('hidden');
       
       const coverID = data.works[index].cover_id;
+      
       if(!coverID){
         noCoverMessage.classList.remove('hidden');
         bookCover.classList.add('hidden');
