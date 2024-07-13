@@ -42,6 +42,8 @@ async function getBook(){
 
 
       bookCover.onload = function(){
+        alert('load')
+
         // bookContainer.classList.remove('hidden')
         bookCover.classList.remove('hidden');
 
@@ -51,6 +53,8 @@ async function getBook(){
         previousBookBtn.classList.remove('hidden')
       }
       bookCover.onerror = function () {
+        alert('errrrrr')
+
         noCoverMessage.classList.remove('hidden');
         spinner.classList.add('hidden');
         bookCover.classList.add('hidden');
