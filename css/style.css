@@ -1,0 +1,88 @@
+/******************************************
+/* CSS
+/*******************************************/
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+body{
+  font-family: "Poetsen One", sans-serif !important;
+  background-image: url(/assets/img/library-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  /* display: flex;
+  justify-content: center;  
+  align-items: center;       */
+  min-height: 100vh;            
+  margin: 0;
+  padding-block: 100px;
+  padding-inline: 1.5em;                
+  /* flex-direction: column;  */
+}
+
+h1{
+  font-family: "Playwrite CU", cursive;
+}
+
+img{
+  display: block;
+  margin: 0 auto;
+}
+
+.app{
+  max-width: 600px;
+  border-radius: 2em;
+  border: 0.5em solid #4e3b2b;
+  padding: 2em;
+  background-color:#FFF;
+}
+
+@media only screen and (min-width: 600px) {
+  .app {
+    padding: 4em;
+  }
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+#getBook,
+#bookDetails{
+  background-color:  #4e3b2b;
+  color: #fff;
+}
+
+.btn-social {
+  border-radius: 100%;
+  display: inline-flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+  color: #fff;
+  margin: 0 0.25em;
+}
+
+#bookContainer{
+  min-height: 500px;
+}
+
+#bookCover{
+  width: 150px;
+}
+
+.hidden{
+  display: none !important;
+}
+
