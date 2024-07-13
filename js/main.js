@@ -12,7 +12,6 @@ const hidden = document.querySelectorAll('.hidden');
 document.querySelector('#getBook').addEventListener('click', getBook);
 
 async function getBook(){
-  alert('hey')
   try{
     const userInput = document.querySelector('#userInput').value
     const url = `https://openlibrary.org/subjects/${userInput}.json`
@@ -80,7 +79,7 @@ async function getBook(){
     displayBook(currentBook);
   }
   catch(err){
-    console.log(err)
+    alert(err)
   }
 }
 
