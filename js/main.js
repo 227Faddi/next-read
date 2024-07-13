@@ -12,6 +12,7 @@ const hidden = document.querySelectorAll('.hidden');
 document.querySelector('#getBook').addEventListener('click', getBook);
 
 async function getBook(){
+  alert('hey')
   try{
     const userInput = document.querySelector('#userInput').value
     const url = `https://openlibrary.org/subjects/${userInput}.json`
@@ -25,7 +26,7 @@ async function getBook(){
       spinner.classList.remove('hidden');
       
       const coverID = data.works[index].cover_id;
-      
+
       if(!coverID){
         noCoverMessage.classList.remove('hidden');
         bookCover.classList.add('hidden');
@@ -39,6 +40,7 @@ async function getBook(){
       bookDetails.href = `https://openlibrary.org${key}`;
       bookTitle.innerText = data.works[index].title;
       bookAuthor.innerText = `By ${data.works[index].authors[0].name}`;
+
 
       bookCover.onload = function(){
         // bookContainer.classList.remove('hidden')
