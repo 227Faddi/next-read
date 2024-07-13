@@ -50,6 +50,11 @@ async function getBook(){
         nextBookBtn.classList.remove('hidden')
         previousBookBtn.classList.remove('hidden')
       }
+      bookCover.onerror = function () {
+        noCoverMessage.classList.remove('hidden');
+        spinner.classList.add('hidden');
+        bookCover.classList.add('hidden');
+      }
     }
     
     // SCROLL THROUGH THE BOOKS AVAILABLE
