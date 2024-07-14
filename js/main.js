@@ -14,12 +14,15 @@ document.querySelector('#getBook').addEventListener('click', getBook);
 async function getBook(){
   try{
     const userInput = document.querySelector('#userInput').value
-    const url = `https://openlibrary.org/subjects/${userInput}.json`
+    const url = `https://openlibrary.org/subjects/love.json`
     const response = await fetch(url);
-    alert(response)
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
     const data = await response.json();
-    alert(data)
+
     const booksAvailable = data.works.length;
+    let currentBook = 0;
     
     function displayBook(index) {
       bookCover.classList.add('hidden');
@@ -62,9 +65,10 @@ async function getBook(){
         bookCover.classList.add('hidden');
       }
     }
+
+    displayBook(currentBook);
     
     // SCROLL THROUGH THE BOOKS AVAILABLE
-    let currentBook = 0;
     nextBookBtn.addEventListener('click', nextBook)
     previousBookBtn.addEventListener('click', previousBook)
   
@@ -86,8 +90,6 @@ async function getBook(){
         displayBook(currentBook);
       }
     }
-
-    displayBook(currentBook);
   }
   catch(err){
     alert(err)
