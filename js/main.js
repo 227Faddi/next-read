@@ -13,8 +13,14 @@ document.querySelector('#getBook').addEventListener('click', getBook);
 
 async function getBook(){
   try{
-    const userInput = document.querySelector('#userInput').value
-    const url = `https://openlibrary.org/subjects/love.json`
+    const userInput = document.querySelector('#userInput').value.toLowerCase().trim()
+    if(!userInput){
+      alert('Please enter a topic or genre')
+      return;
+    }
+
+    alert(userInput)
+    const url = `https://openlibrary.org/subjects/${userInput}.json`
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
@@ -24,12 +30,12 @@ async function getBook(){
     const booksAvailable = data.works.length;
     let currentBook = 0;
     
-    function displayBook(index) {
+    function displayBook(currentBook) {
       bookCover.classList.add('hidden');
       bookContainer.classList.remove('hidden');
       spinner.classList.remove('hidden');
       
-      const coverID = data.works[index].cover_id;
+      const coverID = data.works[currentBook].cover_id;
 
       if(!coverID){
         noCoverMessage.classList.remove('hidden');
@@ -40,26 +46,18 @@ async function getBook(){
         bookCover.src = `https://covers.openlibrary.org/b/id/${coverID}.jpg`;
       }
       
-      const key = data.works[index].key;
+      const key = data.works[currentBook].key;
       bookDetails.href = `https://openlibrary.org${key}`;
-      bookTitle.innerText = data.works[index].title;
-      bookAuthor.innerText = `By ${data.works[index].authors[0].name}`;
-
+      bookTitle.innerText = data.works[currentBook].title;
+      bookAuthor.innerText = `By ${data.works[currentBook].authors[0].name}`;
 
       bookCover.onload = function(){
-        alert('load')
-
-        // bookContainer.classList.remove('hidden')
         bookCover.classList.remove('hidden');
-
         spinner.classList.add('hidden')
-
         nextBookBtn.classList.remove('hidden')
         previousBookBtn.classList.remove('hidden')
       }
       bookCover.onerror = function () {
-        alert('errrrrr')
-
         noCoverMessage.classList.remove('hidden');
         spinner.classList.add('hidden');
         bookCover.classList.add('hidden');
