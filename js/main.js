@@ -13,13 +13,11 @@ document.querySelector('#getBook').addEventListener('click', getBook);
 
 async function getBook(){
   try{
-    const userInput = document.querySelector('#userInput').value.toLowerCase().trim()
+    const userInput = document.querySelector('#userInput').value.trim().toLowerCase()
     if(!userInput){
       alert('Please enter a topic or genre')
       return;
     }
-
-    alert(userInput)
     const url = `https://openlibrary.org/subjects/${userInput}.json`
     const response = await fetch(url);
     if (!response.ok) {
