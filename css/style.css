@@ -9,9 +9,6 @@
   box-sizing: border-box;
 }
 
-/******************************************
-/* LAYOUT
-/*******************************************/
 body{
   font-family: "Poetsen One", sans-serif !important;
   background-image: url(/assets/img/library-bg.jpg);
@@ -19,23 +16,23 @@ body{
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  /* display: flex;
-  justify-content: center;  
-  align-items: center;       */
   min-height: 100vh;            
   margin: 0;
   padding-block: 100px;
   padding-inline: 1.5em;                
-  /* flex-direction: column;  */
-}
-
-h1{
-  font-family: "Playwrite CU", cursive;
 }
 
 img{
   display: block;
   margin: 0 auto;
+}
+
+.hidden{
+  display: none !important;
+}
+
+h1{
+  font-family: "Playwrite CU", cursive;
 }
 
 .app{
@@ -51,14 +48,19 @@ img{
     padding: 4em;
   }
 }
-/******************************************
-/* ADDITIONAL STYLES
-/*******************************************/
+
+#bookContainer{
+  min-height: 500px;
+}
 
 #getBook,
 #bookDetails{
   background-color:  #4e3b2b;
   color: #fff;
+}
+
+#bookCover{
+  width: 150px;
 }
 
 .btn-social {
@@ -72,17 +74,5 @@ img{
   border: 1px solid #fff;
   color: #fff;
   margin: 0 0.25em;
-}
-
-#bookContainer{
-  min-height: 500px;
-}
-
-#bookCover{
-  width: 150px;
-}
-
-.hidden{
-  display: none !important;
 }
 

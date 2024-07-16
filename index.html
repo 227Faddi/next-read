@@ -23,17 +23,16 @@
 	<body>
 		<div class="d-flex flex-column align-items-center justify-content-center">
 			<div class="d-flex align-items-center justify-content-center">
-
+				<!-- app -->
 				<div class="app d-flex flex-column mb-2 shadow-lg">
 					<h1 class="mb-4 text-center">NextRead <i class="bi bi-book"></i></h1> 
 					<p>Welcome to NextRead! Enter a topic or genre you love to discover your next book to read. Dive into captivating stories and find your perfect read with NextRead. Happy reading!</p>
-					
 					<div class="input-group mb-4">
 						<label class="input-group-text" for="userInput">Enter a topic or a subject</label>
 						<input type="text" id="userInput" class="form-control" placeholder="e.g., Mystery, Science Fiction" required>
 					</div>
 					<button id="getBook" class="btn btn-lg">Find Books</button>
-
+					<!-- book details -->
 					<div class="hidden row justify-content-center mt-5 p-4 shadow-lg rounded-5" id="bookContainer">
 						<div class="align-self-start">
 							<h3 id="bookTitle" class="card-title"></h3>
@@ -51,18 +50,16 @@
 						</div>
 					</div>
 				</div>
-		
-
 			</div>
-
+			<!-- social-links -->
 			<div class="d-flex justify-content-center mt-5">
-				<a class="btn-social" href="https://twitter.com/khoumaDev"><i class="bi bi-twitter-x"></i><a>
+				<a class="btn-social" href="https://twitter.com/khoumaDev"><i class="bi bi-twitter-x"></i></a>
 				<a class="btn-social" href="https://www.linkedin.com/in/serigne-khouma/"><i class="bi bi-linkedin"></i></a>
 				<a class="btn-social" href="https://github.com/227Faddi/next-read"><i class="bi bi-github"></i></a>
 				<a class="btn-social" href="https://faliloukhouma.com/"><i class="bi bi-person-fill"></i></a>
 			</div>
 		</div>
-		<script type="text/javascript" src="js/main.js"></script>
+		<script src="js/main.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	</body>
 </html>

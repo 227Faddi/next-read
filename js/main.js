@@ -61,13 +61,12 @@ async function getBook(){
         bookCover.classList.add('hidden');
       }
     }
-
+    
     displayBook(currentBook);
     
-    // SCROLL THROUGH THE BOOKS AVAILABLE
+    // NEXT/PREVIOUS BOOK AVAILABLE
     nextBookBtn.addEventListener('click', nextBook)
     previousBookBtn.addEventListener('click', previousBook)
-  
     function nextBook() {
       if (currentBook < booksAvailable - 1) {
         currentBook++;
