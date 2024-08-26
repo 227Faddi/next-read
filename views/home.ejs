@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('partials/head.ejs', { title: 'Home', link: 'https://next-read.onrender.com/' }) %>
+    </head>
+    <body>
+        <div class="d-flex flex-column min-vh-100">
+            <header class="mt-auto bg-light py-3 text-center">
+                <div class="d-md-flex justify-content-around align-items-center">
+                    <h2 class="mb-0 col"><i class="bi bi-bookmark-heart-fill"></i> Next Read</h2>
+                    <div class="col"></div>
+                </div>
+            </header>
+            <div class="text-white text-center d-flex flex-column justify-content-center align-items-center flex-grow-1 pb-5">
+                <h1 class="bg-dark text-white p-3 rounded-3 border border-3 border-white">Welcome to Next Read</h1>
+                <p class="w-50 fs-4 my-3 bg-dark text-white p-3 rounded-3 border border-3 border-white">Explore our collection to discover books that match your interests. Dive into your next great read!</p>
+                <div class="d-flex gap-4">
+                    <a href="/auth/login" class="mb-3 btn btn-dark d-flex align-items-center justify-content-center">
+                        Log In
+                    </a>
+                    <a href="/auth/signup" class="mb-3 btn btn-dark d-flex align-items-center justify-content-center">
+                        Sign Up
+                    </a>
+                </div>
+                <a href="/auth/google" class="mb-3 btn btn-danger d-flex align-items-center justify-content-center">
+                    <i class="bi bi-google" style="font-size: 1.2rem; margin-right: 8px;"></i>
+                    Log in with Google
+                </a>
+            </div>
+            <!-- FOOTER -->
+            <%- include('partials/footer.ejs') %>
+        </div>
+        <script src='js/main.js'></script>
+    </body>  
+</html>

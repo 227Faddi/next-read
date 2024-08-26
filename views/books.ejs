@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <%- include('partials/head.ejs', { title: 'My Books', link: 'https://leads-track.onrender.com/' }) %>
+	</head>
+	<body>
+		<div class="d-flex flex-column min-vh-100">
+      <!-- HEADER -->
+        <%- include('partials/header.ejs', { link: '/dashboard', name: 'Dashboard'})%>
+		<div class="d-flex flex-column justify-content-center align-items-center flex-grow-1 py-5">
+            <h2 class="text-white bg-dark p-3 border-light rounded-3 border border-3 border-light"><%= user %>'s Collection</h2>
+            <div class="d-flex flex-wrap gap-lg-3 p-5">
+                <% if (books.length === 0){ %>
+                    <p class="text-white fs-3">Your Collection is Empty</p>
+                <% } else { %>
+                    <% books.forEach((book, index) =>{%>
+                        <div class="book card p-4">
+                            <div class="text-center">
+                                <p class="card-title"><%= book.title %></p>
+                                <p class="text-secondary"><%= book.author %></p>
+                            </div>
+                            <% if(book.image){ %>
+                                <img src="<%= book.image %>" id="bookCover" alt="book cover" class="img-fluid mt-3 mb-3">
+                            <% } else{ %>
+                                <p class="text-center">Cover Not Available</p>
+                            <% } %>
+                            <div class="mt-auto">
+                                <form action="/books/updateStatus/<%= book._id %>" method="POST" class="d-inline">
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <select name="status" class="form-select" onchange="this.form.submit()">
+                                      <option value="to-be-read" <%= book.status === 'to-be-read' ? 'selected' : '' %>>To Be Read</option>
+                                      <option value="currently-reading" <%= book.status === 'currently-reading' ? 'selected' : '' %>>Currently Reading</option>
+                                      <option value="read" <%= book.status === 'read' ? 'selected' : '' %>>Read</option>
+                                    </select>
+                                </form>              
+                                <div class="d-flex mt-3">
+                                    <a href="<%= book.link %>" class="btn mb-3 btn-dark col-10 me-1" target="_blank">More details</a>
+                                    <form action="/books/delete/<%= book._id %>" method="POST" class="d-inline">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+		</div>
+        <!-- FOOTER -->
+        <%- include('partials/footer.ejs') %>
+		</div>
+		<script src="js/main.js"></script>
+	</body>
+</html>

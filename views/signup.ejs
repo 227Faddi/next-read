@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs', { title: 'Sign up', link: 'https://leads-track.onrender.com/dashboard/signup' }) %>
+</head>
+<body>
+    <div class="d-flex flex-column min-vh-100">
+        <div class="d-flex flex-column justify-content-center align-items-center flex-grow-1 py-5">
+            <div class="container">
+                <h1 class="bg-dark text-white p-3 rounded-3 border border-3 border-white text-center">Sign Up</h1>
+                <!-- Lead Form -->
+                <form action="/auth/signup" method="POST" class="text-white ">
+                    <div class="mb-2">
+                        <label class="p-2 fw-bold" for="userName">Username:</label>
+                        <input type="text" id="userName" class="form-control" placeholder="Enter username" name="userName" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="p-2 fw-bold" for="email">Email:</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter email" name="email" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="p-2 fw-bold" for="password">Password:</label>
+                        <input type="password" id="password" class="form-control" placeholder="Enter password " name="password" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="p-2 fw-bold" for="confirmPassword">Confirm Password:</label>
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" name="confirmPassword" required>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-dark mt-3">Sign Up</button>
+                        <a href="/dashboard" class="btn btn-dark mt-3">Cancel</a>
+                    </div>
+                </form>
+                <% if (locals.messages.errors) { %>
+                    <% messages.errors.forEach( el => { %>
+                        <div class="alert alert-danger mt-5"><%= el.msg %></div>
+                    <% }) %>    
+                <% } %>
+            </div>
+        </div>
+        <!-- FOOTER -->
+        <%- include('partials/footer.ejs') %>
+    </div>
+</body>
+</html>

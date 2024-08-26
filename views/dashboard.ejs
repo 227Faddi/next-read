@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <%- include('partials/head.ejs', { title: 'Dashboard', link: 'https://leads-track.onrender.com/' }) %>
+	</head>
+	<body>
+		<div class="d-flex flex-column min-vh-100">
+    	<!-- HEADER -->
+     	<%- include('partials/header.ejs', { link: '/books', name: 'My Books'})%>
+		<div class="d-flex flex-column justify-content-center align-items-center flex-grow-1 py-5">
+			<div class="app d-flex flex-column mb-2 shadow-lg">
+				<p>Welcome <%= user.userName %>! Enter a topic or genre you love to discover your next book to read. Dive into captivating stories and find your perfect read with NextRead. Happy reading!</p>
+				<div class="input-group mb-4">
+					<label class="input-group-text" for="userInput">Enter a topic or a subject</label>
+					<input type="text" id="userInput" class="form-control" placeholder="e.g., Mystery, Science Fiction" required>
+				</div>
+				<div class="hidden alert alert-danger" id="errorMessage">Book already in Collection</div>
+				<button id="getBook" class="btn btn-lg">Find Books</button>
+				<!-- book details -->
+				<div class="hidden row justify-content-center mt-5 p-4 shadow-lg rounded-5" id="bookContainer">
+					<div class="align-self-start">
+						<h3 id="bookTitle" class="card-title"></h3>
+						<p id="bookAuthor" class="card-text"></p>
+					</div>
+					<div class="spinner-border hidden mb-3 align-self-center" role="status"></div>
+					<img src="" id="bookCover" alt="book cover" class="img-fluid mt-3 mb-3">
+					<p id="noCoverMessage" class="hidden text-center">Cover Not Available</p>
+					<div class="align-self-end">
+						<a id="bookDetails" href="" class="btn mb-3 d-block" target="_blank">More details</a>
+						<div class="d-flex justify-content-between">
+							<button id="previousBookBtn" class="btn btn-secondary me-2"><i class="bi bi-arrow-left"></i> Previous</button>
+							<button id="addBook" class="btn btn-light">
+								<i class="bi bi-heart"></i>
+							</button>
+							<button id="nextBookBtn" class="btn btn-secondary ms-2">Next <i class="bi bi-arrow-right"></i></button>
+						</div>
+						<div class="hidden mt-3 alert" id="addMessage">Book already in Collection</div>
+					</div>
+				</div>
+			</div>
+		</div>
+      	<!-- FOOTER -->
+      	<%- include('partials/footer.ejs') %>
+		</div>
+		<script src="js/main.js"></script>
+	</body>
+</html>
