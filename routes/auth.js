@@ -8,11 +8,11 @@ router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), authController.googleCallback)
 
-router.get('/logout', authController.logout)
-
 router.get('/login', authController.getLogin)
 
 router.get('/signup', authController.getSignup)
+
+router.get('/logout', authController.logout)
 
 router.post('/login', authController.postLogin)
 

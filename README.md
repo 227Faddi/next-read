@@ -2,6 +2,10 @@
 
 NextRead is a web application designed to help users find book recommendations based on their interests. By entering a topic or genre, users can browse through a selection of books fetched from the [Open Library API](https://openlibrary.org/developers/api). The app displays book titles, authors, and cover images, allowing users to easily discover their next great read. The application includes authentication using Passport.js with Google OAuth2 and local strategy, enabling secure user logins.
 
+**Try the App:** You can log in as a guest using the following credentials:
+- **Email:** guest@gmail.com
+- **Password:** helloworld
+
 ![NextRead Preview](/public/assets/img/preview.gif)
 
 ## How It's Made:

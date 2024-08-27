@@ -1,19 +1,18 @@
 // Elements
 const bookContainer = document.querySelector('#bookContainer');
-const bookTitle = document.querySelector('#bookTitle');
-const bookAuthor = document.querySelector('#bookAuthor');
-const bookCover = document.querySelector('#bookCover');
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const cover = document.querySelector('#cover');
+const link = document.querySelector('#link');
 const noCoverMessage = document.querySelector('#noCoverMessage');
 const spinner = document.querySelector('.spinner-border');
-const bookDetails = document.querySelector('#bookDetails');
-const nextBookBtn = document.querySelector('#nextBookBtn')
-const previousBookBtn = document.querySelector('#previousBookBtn');
-const hidden = document.querySelectorAll('.hidden');
-const addBookBtn = document.querySelector('#addBook')
-const getBookBtn = document.querySelector('#getBook');
 const addMessage = document.querySelector('#addMessage')
 const errorMessage = document.querySelector('#errorMessage')
-
+// Buttons
+const nextBtn = document.querySelector('#nextBtn')
+const previousBtn = document.querySelector('#previousBtn');
+const addBtn = document.querySelector('#addBtn')
+const getBtn = document.querySelector('#getBtn');
 
 // Show and Hide
 function showElement(element) {
@@ -30,15 +29,14 @@ function displayTemporaryMessage(element, message, duration = 1500) {
   setTimeout(() => hideElement(element), duration);
 }
 
-
-getBookBtn.addEventListener('click', getBook);
+getBtn.addEventListener('click', getBook);
 async function getBook(){
   try{
-    showElement(addBookBtn)
+    showElement(addBtn)
 
     const userInput = document.querySelector('#userInput').value.trim().toLowerCase()
     if(!userInput){
-      displayTemporaryMessage(errorMessage, 'Please insert a topic');
+      displayTemporaryMessage(errorMessage, 'Please enter a topic or genre.');
       return;
     }
 
@@ -50,7 +48,7 @@ async function getBook(){
 
     const data = await response.json();
     if(data.works.length === 0){
-      displayTemporaryMessage(errorMessage, 'Invalid input or subject not found');
+      displayTemporaryMessage(errorMessage, 'No results found. Please try a different topic or genre.');
       return
     }
 
@@ -59,41 +57,43 @@ async function getBook(){
     
     // Display Book
     function displayBook(currentBook) {
-      hideElement(bookCover)
+      hideElement(cover)
       showElement(bookContainer)
       showElement(spinner)
       
       const coverID = data.works[currentBook].cover_id;
       if(!coverID){
-        hideElement(bookCover)
+        hideElement(cover)
         hideElement(spinner)
         showElement(noCoverMessage)
       }else{
         hideElement(noCoverMessage)
-        bookCover.src = `https://covers.openlibrary.org/b/id/${coverID}.jpg`;
+        cover.src = `https://covers.openlibrary.org/b/id/${coverID}.jpg`;
       }
-      const key = data.works[currentBook].key;
-      bookDetails.href = `https://openlibrary.org${key}`;
-      bookTitle.innerText = data.works[currentBook].title;
-      bookAuthor.innerText = `By ${data.works[currentBook].authors[0].name}`;
 
-      bookCover.onload = function(){
+      const key = data.works[currentBook].key;
+      link.href = `https://openlibrary.org${key}`;
+      title.innerText = data.works[currentBook].title;
+      author.innerText = `By ${data.works[currentBook].authors[0].name}`;
+
+      cover.onload = function(){
         hideElement(spinner)
-        showElement(bookCover)
-        showElement(nextBookBtn)
-        showElement(previousBookBtn)
+        showElement(cover)
+        showElement(nextBtn)
+        showElement(previousBtn)
       }
-      bookCover.onerror = function () {
+      cover.onerror = function () {
         hideElement(spinner)
-        hideElement(bookCover)
+        hideElement(cover)
         showElement(noCoverMessage)
       }
     }
     
     // NEXT/PREVIOUS BOOK AVAILABLE
-    nextBookBtn.addEventListener('click', nextBook)
+    nextBtn.addEventListener('click', nextBook)
     function nextBook() {
-      showElement(addBookBtn)
+      hideElement(noCoverMessage)
+      showElement(addBtn)
       if (currentBook < booksAvailable - 1) {
         currentBook++;
         displayBook(currentBook);
@@ -104,9 +104,10 @@ async function getBook(){
     }
 
     // PREVIOUS BOOK AVAILABLE
-    previousBookBtn.addEventListener('click', previousBook)
+    previousBtn.addEventListener('click', previousBook)
     function previousBook() {
-      showElement(addBookBtn)
+      hideElement(noCoverMessage)
+      showElement(addBtn)
       if (currentBook > 0) {
         currentBook--;
         displayBook(currentBook);
@@ -123,13 +124,13 @@ async function getBook(){
   } 
 }
 
-addBookBtn.addEventListener('click', addBook)
+addBtn.addEventListener('click', addBook)
 async function addBook(){
-  hideElement(addBookBtn)
-  const title = document.querySelector('#bookTitle').innerText;
-  const author = document.querySelector('#bookAuthor').innerText;
-  const image = document.querySelector('#bookCover').src;
-  const link = document.querySelector('#bookDetails').href;
+  hideElement(addBtn)
+  const title = document.querySelector('#title').innerText;
+  const author = document.querySelector('#author').innerText;
+  const image = document.querySelector('#cover').src;
+  const link = document.querySelector('#link').href;
   try{
     const response = await fetch('dashboard/books/add',{
       method: 'POST',
@@ -143,11 +144,13 @@ async function addBook(){
     })
     const result = await response.json(); 
     if(!response.ok) {
+      displayTemporaryMessage(addMessage, result.message)
+      addMessage.classList.remove('alert-success')
       addMessage.classList.add('alert-danger')
-      displayTemporaryMessage(addMessage, result.message)
     } else{
-      addMessage.classList.add('alert-success')
       displayTemporaryMessage(addMessage, result.message)
+      addMessage.classList.remove('alert-danger')
+      addMessage.classList.add('alert-success')
     }
   }catch(err){
     console.log(err)

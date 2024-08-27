@@ -47,13 +47,13 @@ img{
   min-height: 500px;
 }
 
-#getBook,
-#bookDetails{
+#getBtn,
+#link{
   background-color:  #4e3b2b;
   color: #fff;
 }
 
-#bookCover{
+#cover{
   width: 150px;
 }
 

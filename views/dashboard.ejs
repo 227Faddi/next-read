@@ -14,27 +14,27 @@
 					<label class="input-group-text" for="userInput">Enter a topic or a subject</label>
 					<input type="text" id="userInput" class="form-control" placeholder="e.g., Mystery, Science Fiction" required>
 				</div>
-				<div class="hidden alert alert-danger" id="errorMessage">Book already in Collection</div>
-				<button id="getBook" class="btn btn-lg">Find Books</button>
+				<div class="hidden alert alert-danger" id="errorMessage"></div>
+				<button id="getBtn" class="btn btn-lg">Find Books</button>
 				<!-- book details -->
 				<div class="hidden row justify-content-center mt-5 p-4 shadow-lg rounded-5" id="bookContainer">
 					<div class="align-self-start">
-						<h3 id="bookTitle" class="card-title"></h3>
-						<p id="bookAuthor" class="card-text"></p>
+						<h3 id="title" class="card-title"></h3>
+						<p id="author" class="card-text"></p>
 					</div>
 					<div class="spinner-border hidden mb-3 align-self-center" role="status"></div>
-					<img src="" id="bookCover" alt="book cover" class="img-fluid mt-3 mb-3">
+					<img src="" id="cover" alt="book cover" class="img-fluid mt-3 mb-3">
 					<p id="noCoverMessage" class="hidden text-center">Cover Not Available</p>
 					<div class="align-self-end">
-						<a id="bookDetails" href="" class="btn mb-3 d-block" target="_blank">More details</a>
+						<a id="link" href="" class="btn mb-3 d-block" target="_blank">More details</a>
 						<div class="d-flex justify-content-between">
-							<button id="previousBookBtn" class="btn btn-secondary me-2"><i class="bi bi-arrow-left"></i> Previous</button>
-							<button id="addBook" class="btn btn-light">
+							<button id="previousBtn" class="btn btn-secondary me-2"><i class="bi bi-arrow-left"></i> Previous</button>
+							<button id="addBtn" class="btn btn-light">
 								<i class="bi bi-heart"></i>
 							</button>
-							<button id="nextBookBtn" class="btn btn-secondary ms-2">Next <i class="bi bi-arrow-right"></i></button>
+							<button id="nextBtn" class="btn btn-secondary ms-2">Next <i class="bi bi-arrow-right"></i></button>
 						</div>
-						<div class="hidden mt-3 alert" id="addMessage">Book already in Collection</div>
+						<div class="hidden mt-3 alert" id="addMessage"></div>
 					</div>
 				</div>
 			</div>
