@@ -4,7 +4,6 @@ import morgan from 'morgan';
 import passport from 'passport';
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
-import methodOverride from 'method-override';
 import flash from 'express-flash';
 // CONFIG
 import connectDB from './config/database.js';
