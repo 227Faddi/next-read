@@ -5,7 +5,6 @@ import passport from "passport";
 import MongoStore from "connect-mongo";
 import session from "express-session";
 import flash from "express-flash";
-import path from "path";
 // CONFIG
 import connectDB from "./config/database.js";
 import passportConfig from "./config/passport.js";
@@ -49,10 +48,11 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Static folder and view engine
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+const __dirname = import.meta.dirname;
 
-app.use(express.static(path.join(__dirname, "public")));
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public/"));
 
 // Method Override
 app.use(overrideMiddleware.get);
