@@ -61,8 +61,8 @@ app.use(flash());
 // Routes
 app.use("/", homeRoutes);
 app.use("/dashboard", dashboardRoutes);
-app.use("/books", booksRoutes);
 app.use("/auth", authRoutes);
+app.use("/books", booksRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
