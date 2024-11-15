@@ -1,7 +1,7 @@
 {
-  "name": "leads-track",
+  "name": "next-read",
   "version": "1.0.0",
-  "description": "leads tracking app",
+  "description": "book suggestions",
   "main": "index.js",
   "type": "module",
   "scripts": {
